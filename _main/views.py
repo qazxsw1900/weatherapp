@@ -1,14 +1,24 @@
 from django.shortcuts import render, HttpResponse
 from django.contrib.gis.geoip2 import GeoIP2
-import requests, json
+import requests, json, socket, urllib
 
 
 # Create your views here.
+# No
+class Weather:
+    temperature = 0
+    pressure = 0
+    humidity = 0
+    weather = ''
+    icon = ''
+    img_name = ''
+
+
 def weather_page(request):
     ip = get_client_ip(request)
     g = GeoIP2()
-    page_looks = [ip, g.city(ip)]
-    return HttpResponse(get_weather(g.city(ip)))
+    weather = get_weather(g.city(ip))
+    return render(request, 'main/weather.html', {'weather': weather})
 
 
 def get_client_ip(request):
@@ -16,9 +26,8 @@ def get_client_ip(request):
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]
     else:
-        ip = request.META.get('REMOTE_ADDR')
+        ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
     return ip
-
 
 def get_weather(location):
     api_key = '2ef9d3f5c20c524d673f8c3ad0cab2bb'
@@ -26,17 +35,16 @@ def get_weather(location):
     complete_url = base_url + "appid=" + api_key + "&q=" + location['city']
     response = requests.get(complete_url)
     x = response.json()
-
+    weather = Weather()
     if x["cod"] != "404":
         y = x["main"]
-        current_temperature = y["temp"]
-        current_pressure = y["pressure"]
-        current_humidity = y["humidity"]
+        weather.temperature = round(y["temp"] - 273.15)
+        weather.pressure = y["pressure"]
+        weather.humidity = y["humidity"]
         z = x["weather"]
-        weather_description = z[0]["description"]
-        return " Temperature (in kelvin unit) = " + str(
-            current_temperature) + "\n atmospheric pressure (in hPa unit) = " + str(
-            current_pressure) + "\n humidity (in percentage) = " + str(current_humidity) + "\n description = " + str(
-            weather_description)
+        weather.weather = z[0]["description"].title()
+        weather.icon = z[0]["icon"]
+        weather.img_name = z[0]["main"]
+        return weather
     else:
-        return "City Not Found "
+        return None

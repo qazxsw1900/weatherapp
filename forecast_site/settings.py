@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-no)-%e=^44*4_%y&qzr4(s!t63--wxpvg@=zt+^=$of8%a6l0=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['stormy-earth-38626.herokuapp.com']
+ALLOWED_HOSTS = ['stormy-earth-38626.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    '_main.apps.MainConfig'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'forecast_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
