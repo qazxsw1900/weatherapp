@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%}Weather{% endblock %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'main/style.css'%}">
+<div class="shadow weather-details-block">
+    <img src="http://openweathermap.org/img/wn/{{weather.icon}}@4x.png" alt="{{weather.img_name}}">
+    <div class="weather-info">
+        <h1 class="weather">{{weather.weather}}</h1>
+        <h3 class="temp">Temperature:</h3>
+        <h3 class="temp">{{weather.temperature}}°c</h3>
+        <br>
+        <h3 class="humid">Humidity:</h3>
+        <h3 class="humid">{{weather.humidity}}%</h3>
+        <br>
+        <h3 class="pressure">Atmospheric Pressure:</h3>
+        <h3 class="pressure">{{weather.pressure}} hPa</h3>
+    </div>
+</div>
+{% endblock %}

@@ -18,7 +18,7 @@ def weather_page(request):
     ip = get_client_ip(request)
     g = GeoIP2()
     weather = get_weather(g.city(ip))
-    return render(request, 'main/weather.html', {'weather': weather})
+    return render(request, 'main/weather2.html', {'weather': weather})
 
 
 def get_client_ip(request):
@@ -28,6 +28,7 @@ def get_client_ip(request):
     else:
         ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
     return ip
+
 
 def get_weather(location):
     api_key = '2ef9d3f5c20c524d673f8c3ad0cab2bb'

@@ -1,0 +1,33 @@
+.body{
+background-color: #9f9faf;}
+
+.temp{
+    display:inline;
+    margin-left: 1%;
+}
+.humid{
+    display:inline;
+    margin-left: 1%;
+}
+.pressure{
+    display:inline;
+    margin-left: 1%;
+}
+
+.weather{
+    margin-left: 1%;
+}
+
+.weather-details-block{
+    background-color: #dfdfef;
+    width:50%;
+    margin-left: 25%;
+    margin-top: 2%;
+    padding:1%;
+    padding-bottom:5%;
+    padding-top:0%;
+    border-radius: 1%;
+    border: 2px solid #d0d0e0;
+    text-align: center;
+
+}
