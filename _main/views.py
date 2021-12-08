@@ -7,8 +7,8 @@ def weather_page(request):
     ip = get_client_ip(request)
     g = GeoIP2()
     g.city('72.14.207.99')
-    page_looks = ip + '/n' + g.city(ip)
-    return HttpResponse(ip)
+    page_looks = [ip, g.city(ip)]
+    return HttpResponse(page_looks)
 
 
 def get_client_ip(request):
