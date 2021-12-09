@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%}Register{% endblock %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'notes/new_note.css'%}">
+<div class="body">
+    <div class="shadow input-block">
+        <h1>New Note</h1>
+        <hr>
+        {% if messages %}
+        {% for message in messages %}
+        <h4>{{ message }}</h4>
+        {% endfor%}
+        {% endif %}
+        <form class="" action="" method="Post">{% csrf_token %}
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Title" aria-label="Title"
+                       aria-describedby="basic-addon1" name="title">
+            </div>
+
+            <div class="input-group mb-3">
+                <textarea class="form-control" placeholder="Details"
+                       aria-label="detail"
+                       aria-describedby="basic-addon2" name="detail"></textarea>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

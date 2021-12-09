@@ -4,9 +4,10 @@ import requests, urllib
 
 
 class Weather:
-    temperature = 0
-    pressure = 0
-    humidity = 0
+    temperature = 0  # celsius
+    pressure = 0  # hPa
+    humidity = 0  # %
+    wind_speed = 0  # m/s
     weather = ''
     icon = ''
     img_name = ''
@@ -41,6 +42,7 @@ def get_weather(location):
         weather.pressure = y["pressure"]
         weather.humidity = y["humidity"]
         z = x["weather"]
+        weather.wind_speed = x["wind"]["speed"]
         weather.weather = z[0]["description"].title()
         weather.icon = z[0]["icon"]
         weather.img_name = z[0]["main"]

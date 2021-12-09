@@ -3,28 +3,36 @@
   text-align: center;
 }
 
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: right;
-    background-color:#fafaff;
-}
-
 .body{
     background-color:#dfdfdf;
 }
 
 .card-notes{
-height:400px;
 margin:0.5%;
 margin-left:1%;
+}
+
+.grey-title{
+    background-color:#efefef;
 }
 
 .note-title{
     border:none;
     background-color:#efefef;
-    width:100%;
     margin:0%;
+    font-size:30px;
+    margin-bottom:0px;
+}
+.note-detail{
+  text-align: center;
+  height:100%;
+  margin:auto;
+  margin-top:0px;
+  border:none;
+  background-color:#efefef;
+  width:95%;
+}
+
+.new-note{
+    margin-left:1%;
 }
