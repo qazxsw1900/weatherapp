@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title%}Log In{% endblock %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'account/style.css'%}">
+<div class="body">
+    <div class="shadow input-block login">
+        <h1>Log in</h1>
+        <hr>
+        {% if messages %}
+        {% for message in messages %}
+        <h4>{{ message }}</h4>
+        {% endfor%}
+        {% endif %}
+        <form class="was-validated" action="" method="Post">{% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1" style="width:95px;">Username</span>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                       aria-describedby="basic-addon1" name="username" required>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2" style="width:95px;">Password</span>
+                <input type="password" class="form-control" placeholder="Password"
+                       aria-label="Recipient's username"
+                       aria-describedby="basic-addon2" name="password" required>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Login</button>
+                <a href="/account/register" class="link-dark">Don't have an account.</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

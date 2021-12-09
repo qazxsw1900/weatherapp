@@ -1,10 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.gis.geoip2 import GeoIP2
-import requests, json, socket, urllib
+import requests, urllib
 
 
-# Create your views here.
-# No
 class Weather:
     temperature = 0
     pressure = 0
@@ -18,7 +16,7 @@ def weather_page(request):
     ip = get_client_ip(request)
     g = GeoIP2()
     weather = get_weather(g.city(ip))
-    return render(request, 'main/weather2.html', {'weather': weather})
+    return render(request, 'main/weather.html', {'weather': weather})
 
 
 def get_client_ip(request):

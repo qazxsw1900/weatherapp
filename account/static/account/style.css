@@ -1,0 +1,19 @@
+.input-block{
+    width:50%;
+    margin-left: 25%;
+    margin-top: 2%;
+    padding:1%;
+    padding-bottom:5%;
+    border-radius: 1%;
+    text-align: center;
+    background-color:#fff;
+}
+
+.body{
+    background-color:#dfdfdf;
+}
+
+.login{
+    width:40%;
+    margin-left: 30%;
+}

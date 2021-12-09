@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% load index %}
+{% block title%}Notes{% endblock %}
+{% block content%}
+<div class="body">
+    <form action="" method="POST">
+        <link rel="stylesheet" href="{% static 'notes/style.css'%}">
+        {% if notes|count_notes == 0 %}
+        <button type="submit" class="btn btn-outline-dark btn-lg no-notes">Add New Note</button>
+        {% endif %}
+        <div class="row">
+        {% for note in notes %}
+        <div class="card card-notes" style="width: 20rem;">
+            <div class="card-body">
+                <input class="note-title" type="text" name="">
+                <hr>
+                <input class="note-title" type="text" name="" id="">
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+        <footer class="footer shadow">
+            {{notes|count_notes}} notes
+            <button type="submit" class="btn btn-outline-dark">New Note</button>
+        </footer>
+    </form>
+</div>
+<script>
+
+</script>
+{% endblock %}
