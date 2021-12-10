@@ -9,22 +9,25 @@
     <h1 class="no-notes">You Have No Notes.</h1>
     {% endif %}
     <div class="">
-        {% for note in notes %}
-        <div style="text-align: right; margin-right:10px;">{{note.datetime}}</div>
-        <div class="card card-notes shadow" style="width: 28rem;">
-            <div style="display:table-cell; vertical-align:middle">
-                <div class="input-group mb-3 grey-title">
-                <h3 class="form-control note-title"
-                    aria-label="Recipient's username" aria-describedby="basic-addon2">{{note.note_header}}</h3>
-                <a type="button" class="btn-close delete" name="note_id" href="{{note.id}}" aria-label="Close"></a>
+            {% for note in notes %}
+            <div class="card card-notes shadow" style="width: 28rem;">
+                <div style="display:table-cell; vertical-align:middle">
+                    <div class="input-group mb-3 grey-title">
+                        <h3 class="form-control note-title"
+                            aria-label="Recipient's username" aria-describedby="basic-addon2">{{note.note_header}}</h3>
+                        <a type="button" class="btn-close delete" name="note_id" href="delete/{{note.id}}"
+                           aria-label="Close"></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{note.note_content}}</p>
+                </div>
+                <div style="margin-right:10px;">
+                    <a href="edit/{{note.id}}" class='edit-style'>Edit</a>
+                    <div style="text-align: right;  ">{{note.datetime}}</div>
                 </div>
             </div>
-            <div class="card-body">
-                <p class="card-text">{{note.note_content}}</p>
-            </div>
-            <div style="text-align: right; margin-right:10px;">{{note.datetime}}</div>
-        </div>
-        {% endfor %}
+            {% endfor %}
         <a href="new" class="btn btn-secondary new-note">New Note</a>
     </div>
 </div>

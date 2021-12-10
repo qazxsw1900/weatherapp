@@ -36,3 +36,9 @@ margin-left:1%;
 .new-note{
     margin-left:1%;
 }
+
+.edit-style{
+text-align: left;
+float:left;
+margin-left:10px;
+}

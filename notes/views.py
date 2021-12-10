@@ -20,10 +20,30 @@ def new(request):
         new_note.save()
         response = redirect('/notes')
         return response
-    return render(request, 'notes/new.html', {'notes': None})
+    return render(request, 'notes/new.html', {'note': None, 'title': 'New Note', 'submit': 'Create'})
+
+
+def edit(request, note_id):
+    current_user = request.user
+    try:
+        note = Notes.objects.get(user=current_user, pk=note_id)
+    except:
+        response = redirect('/notes')
+        return response
+    if request.method == 'POST':
+        note.note_header = request.POST['title']
+        note.note_content = request.POST['detail']
+        note.save()
+        response = redirect('/notes')
+        return response
+    return render(request, 'notes/new.html', {'note': note, 'title': 'Edit Note', 'submit': 'Save'})
 
 
 def delete(request, note_id):
-    Notes.objects.filter(id=note_id).delete()
+    current_user = request.user
+    try:
+        Notes.objects.filter(user=current_user, id=note_id).delete()
+    except:
+        pass
     response = redirect('/notes')
     return response
